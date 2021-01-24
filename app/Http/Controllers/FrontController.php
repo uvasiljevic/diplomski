@@ -92,7 +92,7 @@ class FrontController extends Controller
 
         if($request->method() == 'GET' && $category != ''){
             $filter['category.permalink']         = "= " .$category;
-            $filterCategory['permalink'] = "= " .$category;
+            $filterCategory['permalink']          = "= " .$category;
         }
 
         $categoryFlag = $this->modelCategory->getRecords($this->modelCategory->getTableName(), $filterCategory);
