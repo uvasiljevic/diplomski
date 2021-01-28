@@ -101,11 +101,9 @@ class CartController extends Controller
 
         if($request->session()->has('cart')) {
             $request->session()->forget('cart');
-            $request->session()->flush();
         }
         if($request->session()->has('countCart')) {
             $request->session()->forget('countCart');
-            $request->session()->flush();
         }
 
         return response()->json('Success', 204);

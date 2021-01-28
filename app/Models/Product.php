@@ -12,7 +12,7 @@ class Product extends ModelUV
     protected $table     = 'uv_product';
     protected $tableName = 'product';
 
-    public function getRecords($table, $filter = array(), $offset = 0, $limit = 10, $sort = 'id.DESC', $search = '')
+    public function getRecordsPublic($table, $filter = array(), $offset = 0, $limit = 10, $sort = 'id.DESC', $search = '')
     {
         $sort = explode('.', $sort);
 
@@ -47,7 +47,7 @@ class Product extends ModelUV
         return $sql;
     }
 
-    public function getRecord($table, $filter = array())
+    public function getRecordPublic($table, $filter = array())
     {
         $sql   = \DB::table($table)
             ->select($table.'.id', $table.'.name as title', $table.'.oldPrice', $table.'.description', $table.'.shortDescription', $table.'.image', $table.'.price', $table.'.quantity', $table.'.actionId', $this->getPrefix().'action.name', $this->getPrefix().'action.class', $this->getPrefix().'category.permalink as categoryPermalink')

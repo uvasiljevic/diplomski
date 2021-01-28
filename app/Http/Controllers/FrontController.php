@@ -50,10 +50,10 @@ class FrontController extends Controller
     public function index(Request $request){
 
 
-        $this->data['smallAd']    = $this->modelAds->getRecords($this->modelAds->getTableName(), array('isLarge' => '= -1'));
-        $this->data['largeAd']    = $this->modelAds->getRecords($this->modelAds->getTableName(), array('isLarge' => '= 1'));
-        $this->data['homeSlider'] = $this->modelAds->getRecords($this->modelSlider->getTableName(), $this->filter());
-        $this->data['products']   = $this->modelProduct->getRecords($this->modelProduct->getTableName(), $this->filter(), 0, 8);
+        $this->data['smallAd']    = $this->modelAds->getRecordsPublic($this->modelAds->getTableName(), array('isLarge' => '= -1'));
+        $this->data['largeAd']    = $this->modelAds->getRecordsPublic($this->modelAds->getTableName(), array('isLarge' => '= 1'));
+        $this->data['homeSlider'] = $this->modelAds->getRecordsPublic($this->modelSlider->getTableName(), $this->filter());
+        $this->data['products']   = $this->modelProduct->getRecordsPublic($this->modelProduct->getTableName(), $this->filter(), 0, 8);
         $this->data['countCart']  = $this->countCartItems($request);
 
         return view('/uv-public/components/home/home', $this->data);
@@ -95,7 +95,7 @@ class FrontController extends Controller
             $filterCategory['permalink']          = "= " .$category;
         }
 
-        $categoryFlag = $this->modelCategory->getRecords($this->modelCategory->getTableName(), $filterCategory);
+        $categoryFlag = $this->modelCategory->getRecordsPublic($this->modelCategory->getTableName(), $filterCategory);
 
         if(count($categoryFlag) == 0){
             abort(404);
@@ -111,7 +111,7 @@ class FrontController extends Controller
             $offset = $request->input('offset');
         }
 
-        $data  = $this->modelProduct->getRecords($this->modelProduct->getTableName(), $filter, $offset,8, $sort, $search);
+        $data  = $this->modelProduct->getRecordsPublic($this->modelProduct->getTableName(), $filter, $offset,8, $sort, $search);
 
         if($request->method() == 'GET'){
             $this->data['products'] = $data;
@@ -138,8 +138,8 @@ class FrontController extends Controller
             $filter['permalink'] = "= " .$product;
         }
 
-        $product          = $this->modelProduct->getRecord($this->modelProduct->getTableName(), $filter);
-        $relatedProducts  = $this->modelProduct->getRecords($this->modelProduct->getTableName(), $filterRelated, 0, 4);
+        $product          = $this->modelProduct->getRecordPublic($this->modelProduct->getTableName(), $filter);
+        $relatedProducts  = $this->modelProduct->getRecordsPublic($this->modelProduct->getTableName(), $filterRelated, 0, 4);
 
         if(!isset($product[0])){
             abort(404);
@@ -148,7 +148,7 @@ class FrontController extends Controller
         if($product){
             $filterImages['productId'] = "= " .$product[0]->id;
         }
-        $images           = $this->modelImage->getRecords($this->modelImage->getTableName(), $filterImages, 0, 3);
+        $images           = $this->modelImage->getRecordsPublic($this->modelImage->getTableName(), $filterImages, 0, 3);
 
         $this->data['maxQuantity']     = $product[0]->quantity - 2;
         $this->data['product']         = $product;
@@ -164,8 +164,8 @@ class FrontController extends Controller
 
         $filter               = $this->filter();
 
-        $courier              = $this->modelCourier->getRecord($this->modelCourier->getTableName(), $filter);
-        $paymentType          = $this->modelPaymentType->getRecords($this->modelPaymentType->getTableName(), $filter);
+        $courier              = $this->modelCourier->getRecordPublic($this->modelCourier->getTableName(), $filter);
+        $paymentType          = $this->modelPaymentType->getRecordsPublic($this->modelPaymentType->getTableName(), $filter);
 
         $totalCartPrice       = 0;
         if($request->session()->has('cart')) {
@@ -181,7 +181,7 @@ class FrontController extends Controller
         $totalForPay  = $totalCartPrice + $courierPrice;
 
         $this->data['couriers']        = $courier;
-        $this->data['paymentTypes']     = $paymentType;
+        $this->data['paymentTypes']    = $paymentType;
         $this->data['countCart']       = $this->countCartItems($request);
         $this->data['totalCartPrice']  = number_format((float)$totalCartPrice, '2', '.', '');
         $this->data['courierPrice']    = number_format((float)$courierPrice, '2', '.', '');

@@ -84,7 +84,7 @@ class UserController extends Controller
     public function logout(Request $request){
         if($request->session()->has('user')){
             $request->session()->forget('user');
-            $request->session()->flush();
+            //$request->session()->flush();
 
         }
 
