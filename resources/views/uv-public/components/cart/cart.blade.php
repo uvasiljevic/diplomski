@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row cart_items_row">
-                <div class="col">
+                <div id="cartItems" class="col">
 
                     <!-- Cart Item -->
                     @foreach(session()->get('cart') as $item)
@@ -45,7 +45,7 @@
                             <div class="product_quantity_container">
                                 <div class="product_quantity clearfix">
                                     <span>Qty</span>
-                                    <input id="quantity_input" type="number" style="width: 100%;" pattern="[0-9]*" value="{{$item->quantity}}" max="{{$item->maxQuantity}}" min="1" onkeydown="return false">
+                                    <input class="cart-product-quantity" type="number" style="width: 100%;" pattern="[0-9]*" data-productid="{{$item->productId}}" value="{{$item->quantity}}" max="{{$item->maxQuantity}}" min="1" onkeydown="return false">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                     <input type="button" name="btnClearCart" id="btnClearCart" value="Clear cart"/>
                                 </form>
                             </div>
-                            <div class="button update_cart_button"><a href="#">Update cart</a></div>
+{{--                            <div class="button update_cart_button"><a href="#">Update cart</a></div>--}}
                         </div>
                     </div>
                 </div>

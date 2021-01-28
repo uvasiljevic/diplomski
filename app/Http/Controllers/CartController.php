@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courier;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Object_;
@@ -10,10 +11,12 @@ class CartController extends Controller
 {
 
     protected $modelProduct;
+    protected $modelCourier;
 
     public function __construct()
     {
         $this->modelProduct = new Product();
+        $this->modelCourier = new Courier();
     }
 
     function addToCart(Request $request)
@@ -45,7 +48,7 @@ class CartController extends Controller
             }
         }
 
-        $maxQuantity = $product->quantity - 2;
+        $maxQuantity = $this->getMaxQuantityForProduct($product);
 
         if ($request->quantity > $maxQuantity) {
             $return->message = 'Available '. $maxQuantity .' '. $product->name.' on stock';
@@ -75,14 +78,12 @@ class CartController extends Controller
 
         foreach ($request->session()->get('cart') as $item) {
             if ($item->productId == $product->id) {
-                $countIncart       = $item->quantity + $request->quantity;
-                if($countIncart > $item->maxQuantity){
-                    $return->message   = 'You already have '.$item->quantity.' '.$item->productName.' in your cart. Limit for that product is '.$item->maxQuantity;
-                    $return->countCart = $this->countCartItems($request);
-                    $return->status    = 400;
 
-                    return $return;
+                $flagQuantity = $this->checkQuantityInCart($item, $request);
+                if($flagQuantity->status == 400){
+                    return $flagQuantity;
                 }
+
                 $item->quantity    += $request->quantity;
                 $item->totalPrice  = number_format((float)$item->quantity*$product->price, '2', '.', '');
 
@@ -91,10 +92,99 @@ class CartController extends Controller
                 $return->status    = 201;
 
                 return $return;
-            }else{
-                return false;
             }
         }
+    }
+
+    function updateCartItem(Request $request){
+//        global $flag;
+        //$return = new Object_();
+        $return            = array();
+        $request->cartItem = true;
+
+        $flag  = false;
+        foreach ($request->session()->get('cart') as $item) {
+            if ($item->productId == $request->productId) {
+
+                $flagQuantity = $this->checkQuantityInCart($item, $request);
+                if($flagQuantity->status == 400){
+                    return response()->json($flagQuantity->message,$flagQuantity->status);
+                }
+
+                $item->quantity    = $request->quantity;
+                $item->totalPrice  = number_format((float)$item->quantity*$item->price, '2', '.', '');
+                $flag              = true;
+            }
+        }
+
+        if(!$flag){
+            return response()->json('Error', 400);
+        }
+
+        $filter               = $this->filter();
+
+        $courier              = $this->modelCourier->getRecordPublic($this->modelCourier->getTableName(), $filter);
+
+        $totalCartPrice       = $this->getTotalCartPrice($request);
+
+        $courierPrice         = 0;
+        if($courier){
+            $courierPrice     = $this->modelCourier->countCourierPrice($courier[0], $totalCartPrice);
+        }
+
+        $totalForPay  = $totalCartPrice + $courierPrice;
+
+//        $return->message        = 'Successfully updated cart!';
+//        $return->countCart      = $this->countCartItems($request);
+//        $return->status         = 201;
+//        $return->cart           = $request->session()->get('cart');
+//        $return->totalCartPrice = $this->getTotalCartPrice($request);
+//        $return->totalForpay    = $totalForPay;
+
+        $return['message']        = 'Successfully updated cart!';
+        $return['countCart']      = $this->countCartItems($request);
+        $return['status']         = 201;
+        $return['cart']           = $request->session()->get('cart');
+        $return['totalCartPrice'] = $this->getTotalCartPrice($request);
+        $return['totalForpay']    = $totalForPay;
+
+        return response()->json($return, $return['status']);
+    }
+
+    function checkQuantityInCart($cartItem, $request){
+        $return = new Object_();
+
+        $product     = Product::find($request->productId);
+
+        if (!$product) {
+            $return->message = 'Bad request!';
+            return response()->json($return, 400);
+        }
+
+        $maxQuantity = $this->getMaxQuantityForProduct($product);
+
+        if(isset($request->cartItem) && $request->cartItem){
+            $countIncart       = $request->quantity;
+        }else{
+            $countIncart       = $cartItem->quantity + $request->quantity;
+        }
+
+        if($countIncart > $maxQuantity){
+            $return->message   = 'You already have '.$cartItem->quantity.' '.$cartItem->productName.' in your cart. Limit for this product is '.$cartItem->maxQuantity;
+            $return->countCart = $this->countCartItems($request);
+            $return->status    = 400;
+
+            return $return;
+        }
+
+        $return->status = 200;
+        return $return;
+    }
+
+    function getMaxQuantityForProduct($product){
+        $maxQuantity = $product->quantity - 2;
+
+        return $maxQuantity;
     }
 
     public function clearCart(Request $request){

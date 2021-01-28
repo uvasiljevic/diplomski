@@ -47,12 +47,13 @@ $(document).ready(function()
     addToCart();
     countCard();
     clearCart();
+    updateCartItem();
 
-	/*
+    /*
 
-	2. Set Header
+    2. Set Header
 
-	*/
+    */
 
 	function setHeader()
 	{
@@ -331,7 +332,7 @@ $(document).ready(function()
 
     function countCard(){
         var countCart = $('#countCart');
-console.log(localStorage.getItem("countCard"))
+
         if(localStorage.getItem("countCard") !== 'undefined' && localStorage.getItem("countCard") != null){
             countCart.html('('+ localStorage.getItem("countCard")+')');
         }else{
@@ -367,7 +368,6 @@ console.log(localStorage.getItem("countCard"))
     }
 
     function cartNoContent(){
-        console.log('ulazi')
         var html = `<div class="row row_cart_buttons">
                     <div class="col">
                         <div class="alert alert-danger">
@@ -380,6 +380,67 @@ console.log(localStorage.getItem("countCard"))
                 </div>`
 
         $('.cart_info .container').html(html);
+    }
+
+
+    function updateCartItem(){
+        $('.cart-product-quantity').on('change', function(e){
+            console.log('ulazi')
+            e.preventDefault();
+            var quantity   = $(this).val();
+            var productId  = $(this).data('productid');
+            $.ajax({
+                url: window.location + '/update-cart-item',
+                method: "post",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    quantity:  quantity,
+                    productId: productId
+                },
+                success: function(data){
+                    writeCartItems(data.cart);
+                }
+            });
+        });
+    }
+
+    function writeCartItems(items){
+	    var html = '';
+        if(items)
+        {
+            for(let item of items){
+                html += `<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                        <!-- Name -->
+                        <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+                            <div class="cart_item_image">
+                                <div><img src="uv-public/images/${item.image}" alt=""></div>
+                            </div>
+                            <div class="cart_item_name_container">
+                                <div class="cart_item_name"><a href="${item.permalink}">${item.productName}</a></div>
+                                <div class="cart_item_edit"><a href="#">Remove</a></div>
+                            </div>
+                        </div>
+                        <!-- Price -->
+                        <div class="cart_item_price">$${item.price}</div>
+                        <!-- Quantity -->
+                        <div class="cart_item_quantity">
+                            <div class="product_quantity_container">
+                                <div class="product_quantity clearfix">
+                                    <span>Qty</span>
+                                    <input class="cart-product-quantity" type="number" style="width: 100%;" pattern="[0-9]*" data-productId="${item.productId}" value="${item.quantity}" max="${item.maxQuantity}" min="1" onkeydown="return false">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Total -->
+                        <div class="cart_item_total">$${item.totalPrice}</div>
+                    </div>`
+            }
+        }
+
+        $('#cartItems').html(html);
     }
 
 });

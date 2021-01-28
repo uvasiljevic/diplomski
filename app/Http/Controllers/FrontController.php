@@ -37,16 +37,6 @@ class FrontController extends Controller
         $this->data['menu']      = $modelMenu->getMenu();
     }
 
-    public function filter(){
-        $filter = [
-            "status" => "= 1",
-            "del"    => "= -1",
-        ];
-
-        return $filter;
-    }
-
-
     public function index(Request $request){
 
 
@@ -167,15 +157,12 @@ class FrontController extends Controller
         $courier              = $this->modelCourier->getRecordPublic($this->modelCourier->getTableName(), $filter);
         $paymentType          = $this->modelPaymentType->getRecordsPublic($this->modelPaymentType->getTableName(), $filter);
 
-        $totalCartPrice       = 0;
-        if($request->session()->has('cart')) {
-            foreach ($request->session()->get('cart') as $item){
-                $totalCartPrice += $item->totalPrice;
-            }
-        }
 
+        $totalCartPrice       = $this->getTotalCartPrice($request);
+
+        $courierPrice         = 0;
         if($courier){
-            $courierPrice = $this->modelCourier->countCourierPrice($courier[0], $totalCartPrice);
+            $courierPrice     = $this->modelCourier->countCourierPrice($courier[0], $totalCartPrice);
         }
 
         $totalForPay  = $totalCartPrice + $courierPrice;

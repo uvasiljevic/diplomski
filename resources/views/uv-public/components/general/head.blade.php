@@ -3,6 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="icon" href="{{asset("uv-public/images/product_9.jpg")}}" type="image/jpg" sizes="16x16">
 <link rel="stylesheet" type="text/css" href="{{asset("uv-public/styles/bootstrap4/bootstrap.min.css")}}">
 <link href="{{asset("uv-public/plugins/font-awesome-4.7.0/css/font-awesome.min.css")}}" rel="stylesheet" type="text/css">

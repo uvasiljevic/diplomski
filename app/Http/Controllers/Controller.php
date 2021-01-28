@@ -11,6 +11,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function filter(){
+        $filter = [
+            "status" => "= 1",
+            "del"    => "= -1",
+        ];
+
+        return $filter;
+    }
 
     protected function jsonError($message, $code = 500)
     {
@@ -36,5 +44,16 @@ class Controller extends BaseController
         }else{
             return 0;
         }
+    }
+
+    function getTotalCartPrice($request){
+        $totalCartPrice       = 0;
+        if($request->session()->has('cart')) {
+            foreach ($request->session()->get('cart') as $item){
+                $totalCartPrice += $item->totalPrice;
+            }
+        }
+
+        return $totalCartPrice;
     }
 }
