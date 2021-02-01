@@ -47,8 +47,11 @@ $(document).ready(function()
     addToCart();
     countCard();
     clearCart();
-    updateCartItem();
 
+    $(document).on('change', '.cart-product-quantity', function(e){
+        e.preventDefault();
+        updateCartItem(this);
+    });
     /*
 
     2. Set Header
@@ -383,28 +386,30 @@ $(document).ready(function()
     }
 
 
-    function updateCartItem(){
-        $('.cart-product-quantity').on('change', function(e){
-            console.log('ulazi')
-            e.preventDefault();
-            var quantity   = $(this).val();
-            var productId  = $(this).data('productid');
-            $.ajax({
-                url: window.location + '/update-cart-item',
-                method: "post",
-                dataType: "json",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data:{
-                    quantity:  quantity,
-                    productId: productId
-                },
-                success: function(data){
-                    writeCartItems(data.cart);
-                }
-            });
+    function updateCartItem(thisParameter){
+
+        var quantity   = $(thisParameter).val();
+        var productId  = $(thisParameter).data('productid');
+        $.ajax({
+            url: window.location + '/update-cart-item',
+            method: "post",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{
+                quantity:  quantity,
+                productId: productId
+            },
+            success: function(res){
+                localStorage.setItem("countCard", res.countCart);
+                writeCartItems(res.cart);
+                countCard();
+                $('#total_cart_price').html('$'+res.totalCartPrice);
+                $('#total_for_pay').html('$'+res.totalForPay);
+            }
         });
+
     }
 
     function writeCartItems(items){

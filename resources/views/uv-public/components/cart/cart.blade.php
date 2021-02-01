@@ -66,7 +66,6 @@
                                     <input type="button" name="btnClearCart" id="btnClearCart" value="Clear cart"/>
                                 </form>
                             </div>
-{{--                            <div class="button update_cart_button"><a href="#">Update cart</a></div>--}}
                         </div>
                     </div>
                 </div>
@@ -78,9 +77,6 @@
                     <div class="section_title">Billing Address</div>
                     <div class="section_subtitle">Enter your address info</div>
                 <form action="#" method="POST" id="checkout_form" class="checkout_form">
-{{--                    @if(session()->has('user'))--}}
-{{--                        {{dd(session()->get('user'))}}--}}
-{{--                        @endif--}}
                     @csrf
                     <div class="row checkout_form_container">
                         <div class="col-xl-6">
@@ -201,7 +197,7 @@
                                 @endif
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div class="cart_total_title">Subtotal</div>
-                                    <div class="cart_total_value ml-auto">${{$totalCartPrice}}</div>
+                                    <div class="cart_total_value ml-auto" id="total_cart_price">${{$totalCartPrice}}</div>
                                 </li>
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div class="cart_total_title">Shipping</div>
@@ -209,7 +205,7 @@
                                 </li>
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div class="cart_total_title">Total</div>
-                                    <div class="cart_total_value ml-auto">${{$totalForPay}}</div>
+                                    <div class="cart_total_value ml-auto" id="total_for_pay">${{$totalForPay}}</div>
                                 </li>
                             </ul>
 

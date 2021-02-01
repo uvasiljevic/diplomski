@@ -97,8 +97,6 @@ class CartController extends Controller
     }
 
     function updateCartItem(Request $request){
-//        global $flag;
-        //$return = new Object_();
         $return            = array();
         $request->cartItem = true;
 
@@ -134,19 +132,12 @@ class CartController extends Controller
 
         $totalForPay  = $totalCartPrice + $courierPrice;
 
-//        $return->message        = 'Successfully updated cart!';
-//        $return->countCart      = $this->countCartItems($request);
-//        $return->status         = 201;
-//        $return->cart           = $request->session()->get('cart');
-//        $return->totalCartPrice = $this->getTotalCartPrice($request);
-//        $return->totalForpay    = $totalForPay;
-
         $return['message']        = 'Successfully updated cart!';
         $return['countCart']      = $this->countCartItems($request);
         $return['status']         = 201;
         $return['cart']           = $request->session()->get('cart');
-        $return['totalCartPrice'] = $this->getTotalCartPrice($request);
-        $return['totalForpay']    = $totalForPay;
+        $return['totalCartPrice'] = number_format((float)$this->getTotalCartPrice($request), '2', '.', '');
+        $return['totalForPay']    = number_format((float)$totalForPay, '2', '.', '');
 
         return response()->json($return, $return['status']);
     }
