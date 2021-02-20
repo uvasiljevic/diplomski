@@ -11,6 +11,11 @@
     <div class="cart_info">
         <div class="container">
             @if(session()->has('cart'))
+            <div class="row row_cart_buttons">
+                <div class="col" id="updateCartInfo">
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
                     <!-- Column Titles -->
@@ -152,8 +157,12 @@
                         <div class="section_subtitle">Enter your coupon code</div>
                         <div class="coupon_form_container">
                             <form action="#" id="coupon_form" class="coupon_form">
+                                @csrf
                                 <input type="text" class="coupon_input" required="required">
-                                <button class="button coupon_button"><span>Apply</span></button>
+{{--                                <button class="button coupon_button"><span>Apply</span></button>--}}
+                                <div class="button coupon_button">
+                                    <input type="button" name="btnApplyTicket" id="btnApplyTicket" value="Apply"/>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -210,8 +219,10 @@
                             </ul>
 
                         </div>
-
-                        <div class="button checkout_button"><a href="#">Make order</a></div>
+                        <div class="button checkout_button">
+                            <input type="button" name="btnMakeOrder" id="btnMakeOrder" value="Make order"/>
+                        </div>
+{{--                        <div class="button checkout_button"><a href="#">Make order</a></div>--}}
                         </form>
                     </div>
                 </div>

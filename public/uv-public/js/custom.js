@@ -317,21 +317,30 @@ $(document).ready(function()
                 data: $("#product_form").serialize(),
                 dataType:"json",
                 success: function(res){
-
-                    info.css({'color': 'green', 'font-size': '20pt'});
-                    info.html('- '+res.message);
+                    info.html(successMessage(res.message));
                     localStorage.setItem("countCard", res.countCart);
                     countCard();
                 },
                 error: function(res){
-                    info.css({'color': 'red', 'font-size': '15pt'});
-                    console.log(res)
-                    info.html('- '+res.responseJSON.message);
+                    info.html(errorMessage(res.responseJSON.message));
                 }
             })
 
         });
     }
+
+    function successMessage(message){
+	    var html = '<div class="alert alert-success">'+message+'</div>'
+
+        return html;
+    }
+
+    function errorMessage(message){
+        var html = '<div class="alert alert-danger">'+message+'</div>'
+
+        return html;
+    }
+
 
     function countCard(){
         var countCart = $('#countCart');
@@ -407,6 +416,7 @@ $(document).ready(function()
                 countCard();
                 $('#total_cart_price').html('$'+res.totalCartPrice);
                 $('#total_for_pay').html('$'+res.totalForPay);
+
             }
         });
 
@@ -414,6 +424,7 @@ $(document).ready(function()
 
     function writeCartItems(items){
 	    var html = '';
+	    var info = '';
         if(items)
         {
             for(let item of items){
@@ -444,7 +455,8 @@ $(document).ready(function()
                     </div>`
             }
         }
-
+        info += ` <div class="alert alert-success">Cart successfully updated.</div>`;
+        $('#updateCartInfo').html(info);
         $('#cartItems').html(html);
     }
 
