@@ -12,6 +12,8 @@ class Product extends ModelUV
     protected $table     = 'uv_product';
     protected $tableName = 'product';
 
+    public $timestamps   = false;
+
     public function getRecordsPublic($table, $filter = array(), $offset = 0, $limit = 10, $sort = 'id.DESC', $search = '')
     {
         $sort = explode('.', $sort);

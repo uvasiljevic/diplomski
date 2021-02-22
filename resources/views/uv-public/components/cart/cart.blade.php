@@ -81,7 +81,7 @@
                 <div class="billing checkout_section">
                     <div class="section_title">Billing Address</div>
                     <div class="section_subtitle">Enter your address info</div>
-                <form action="#" method="POST" id="checkout_form" class="checkout_form">
+                <form method="POST" id="checkout_form" class="checkout_form">
                     @csrf
                     <div class="row checkout_form_container">
                         <div class="col-xl-6">
@@ -141,7 +141,7 @@
                             @if($couriers)
                             @foreach($couriers as $courier)
                             <label class="delivery_option clearfix">{{$courier->name}}
-                                <input type="radio" name="radio" value="{{$courier->id}}">
+                                <input type="radio" name="courrier" id="courrier" value="{{$courier->id}}">
                                 <span class="checkmark"></span>
                             </label>
                                 <span class="delivery_price">{{$courier->description}}</span>
@@ -151,22 +151,22 @@
                     </div>
 
                     <!-- Coupon Code -->
-                    @if(session()->has('user'))
-                    <div class="coupon">
-                        <div class="section_title">Coupon code</div>
-                        <div class="section_subtitle">Enter your coupon code</div>
-                        <div class="coupon_form_container">
-                            <form action="#" id="coupon_form" class="coupon_form">
-                                @csrf
-                                <input type="text" class="coupon_input" required="required">
+{{--                    @if(session()->has('user'))--}}
+{{--                    <div class="coupon">--}}
+{{--                        <div class="section_title">Coupon code</div>--}}
+{{--                        <div class="section_subtitle">Enter your coupon code</div>--}}
+{{--                        <div class="coupon_form_container">--}}
+{{--                            <form action="#" id="coupon_form" class="coupon_form">--}}
+{{--                                @csrf--}}
+{{--                                <input type="text" class="coupon_input" required="required">--}}
 {{--                                <button class="button coupon_button"><span>Apply</span></button>--}}
-                                <div class="button coupon_button">
-                                    <input type="button" name="btnApplyTicket" id="btnApplyTicket" value="Apply"/>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    @endif
+{{--                                <div class="button coupon_button">--}}
+{{--                                    <input type="button" name="btnApplyTicket" id="btnApplyTicket" value="Apply"/>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    @endif--}}
                 </div>
 
                 <div class="col-lg-6 offset-lg-2">
@@ -174,22 +174,6 @@
                         <div class="section_title">Cart total</div>
                         <div class="section_subtitle">Final info</div>
                         <div class="cart_total_container">
-{{--                            <div class="payment">--}}
-{{--                                <div class="section_title">Payment type</div>--}}
-{{--                                <div class="section_subtitle">Select the one you want</div>--}}
-{{--                                <div class="payment_options">--}}
-{{--                                    @if($paymentTypes)--}}
-{{--                                        @foreach($paymentTypes as $paymentType)--}}
-{{--                                            <li class="d-flex flex-row align-items-center justify-content-start">--}}
-{{--                                            <label class="payment_option clearfix">{{$paymentType->name}}--}}
-{{--                                                <input type="radio" name="paymentType" value="{{$paymentType->code}}">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                            </li>--}}
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <ul>
                                 @if($paymentTypes)
                                     <li class="d-flex flex-row align-items-center justify-content-start">
@@ -198,7 +182,7 @@
                                     @foreach($paymentTypes as $paymentType)
                                         <li class="d-flex flex-row align-items-center justify-content-start">
                                             <label class="payment_option clearfix">{{$paymentType->name}}
-                                                <input type="radio" name="paymentType" value="{{$paymentType->code}}">
+                                                <input type="radio" name="paymentType" id="paymentType" value="{{$paymentType->code}}">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </li>

@@ -47,6 +47,7 @@ $(document).ready(function()
     addToCart();
     countCard();
     clearCart();
+    makeOrder();
 
     $(document).on('change', '.cart-product-quantity', function(e){
         e.preventDefault();
@@ -458,6 +459,62 @@ $(document).ready(function()
         info += ` <div class="alert alert-success">Cart successfully updated.</div>`;
         $('#updateCartInfo').html(info);
         $('#cartItems').html(html);
+    }
+
+    function makeOrder(){
+        $('#btnMakeOrder').on('click', function(e){
+            e.preventDefault();
+            var info      = $('#updateCartInfo').html('');
+
+            $.ajax({
+                url:window.location+"/make-order",
+                method:"post",
+                data: $("#checkout_form").serialize(),
+                dataType:"json",
+                success: function(res){
+                    localStorage.removeItem("countCard");
+                    countCard();
+                    writeOrderMadeMessage(res);
+                    window.scrollTo(0, 0);
+                },
+                error: function(res){
+                    info.html(writeError(res, info) );
+                    window.scrollTo(0, 0);
+                }
+            })
+
+
+        });
+    }
+
+    function writeError(res, error){
+        if(res.status === 500){
+            return errorMessage('Problem with server, please try again later');
+        }else if(res.status === 400){
+            var errors = res.responseJSON.error.message;
+            if(errors){
+                var html = '';
+                for(const [key, value] of Object.entries(errors)){
+                    html += `${value}<br/>`;
+                }
+                return errorMessage(html);
+            }
+        }
+    }
+
+    function writeOrderMadeMessage(data){
+        var html = `<div class="row row_cart_buttons">
+                    <div class="col">
+                        <div class="alert alert-success">
+                            Your order #${data.orderId} has been successfully made. Thank you.
+                        </div>
+                        <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
+                            <div class="button continue_shopping_button"><a href="/products">Continue shopping</a></div>
+                        </div>
+                    </div>
+                </div>`
+
+        $('.cart_info .container').html(html);
     }
 
 });

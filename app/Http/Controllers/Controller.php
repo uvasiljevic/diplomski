@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -55,5 +56,14 @@ class Controller extends BaseController
         }
 
         return $totalCartPrice;
+    }
+
+    public function updateProductQuantity($item){
+        $product = Product::find($item->productId);
+
+        $product->quantity = $product->quantity - $item->quantity;
+
+        return $product->save();
+
     }
 }
