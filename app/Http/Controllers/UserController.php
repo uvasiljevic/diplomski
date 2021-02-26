@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailConfirmRegistration;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -44,9 +46,16 @@ class UserController extends Controller
             $user->password     = $md5password;
             $user->dateCreate  = date('Y-m-d H:i:s');
 
-             $user->save();
+            $user->save();
 
-             return response()->json('Successful registration!', 201);
+            $data = array(
+                'firstname' => $request->r_firstname,
+                'lastname'  => $request->r_lastname,
+            );
+
+            Mail::to($request->r_email)->send(new SendMailConfirmRegistration($data));
+
+            return response()->json('Successful registration!', 201);
 
         }
         catch(\Exception $ex) {

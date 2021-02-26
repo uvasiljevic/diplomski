@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailConfirmOrder;
 use App\Models\Courier;
 use App\Models\Order;
 use App\Models\OrderAddress;
@@ -9,6 +10,7 @@ use App\Models\OrderItem;
 use App\Models\PaymentType;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -108,6 +110,13 @@ class OrderController extends Controller
 
             });
 
+            $data = array(
+                'firstname' => $request->firstname,
+                'lastname'  => $request->lastname,
+                'order'     => $order->id
+            );
+
+            Mail::to($request->email)->send(new SendMailConfirmOrder($data));
             $request->session()->forget('cart');
             $request->session()->forget('countCart');
 
