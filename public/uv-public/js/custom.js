@@ -53,6 +53,11 @@ $(document).ready(function()
         e.preventDefault();
         updateCartItem(this);
     });
+
+    $(document).on('click', '.cart-item-remove', function(e){
+        e.preventDefault();
+        removeCartItem(this);
+    });
     /*
 
     2. Set Header
@@ -437,7 +442,7 @@ $(document).ready(function()
                             </div>
                             <div class="cart_item_name_container">
                                 <div class="cart_item_name"><a href="${item.permalink}">${item.productName}</a></div>
-                                <div class="cart_item_edit"><a href="#">Remove</a></div>
+                                <div class="cart_item_edit"><a href="#" class="cart-item-remove" data-productid="${item.productId}">Remove</a></div>
                             </div>
                         </div>
                         <!-- Price -->
@@ -517,4 +522,36 @@ $(document).ready(function()
         $('.cart_info .container').html(html);
     }
 
+    function removeCartItem(thisParameter){
+        var validator = confirm('Are you sure?');
+        if(validator){
+            var productId  = $(thisParameter).data('productid');
+            $.ajax({
+                url: window.location + '/remove-cart-item',
+                method: "delete",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    productId: productId
+                },
+                success: function(res, error, xmlHttpRequestResponseType){
+                    localStorage.setItem("countCard", res.countCart);
+                    if(res.countCart == 0){
+                        cartNoContent();
+                    }else{
+                        writeCartItems(res.cart);
+                    }
+                    countCard();
+                    $('#total_cart_price').html('$'+res.totalCartPrice);
+                    $('#total_for_pay').html('$'+res.totalForPay);
+
+                },
+                error: function (res) {
+                    console.log(res)
+                }
+            });
+        }
+    }
 });

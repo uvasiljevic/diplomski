@@ -34,6 +34,7 @@ Route::post('/products', 'App\Http\Controllers\FrontController@products');
 Route::post('/{category}/{product}/add-to-cart', 'App\Http\Controllers\CartController@addToCart');
 Route::delete('/cart/clear-cart', 'App\Http\Controllers\CartController@clearCart');
 Route::post('/cart/update-cart-item', 'App\Http\Controllers\CartController@updateCartItem');
+Route::delete('/cart/remove-cart-item', 'App\Http\Controllers\CartController@removeCartItem');
 Route::post('/cart/make-order', 'App\Http\Controllers\OrderController@makeOrder');
 
 

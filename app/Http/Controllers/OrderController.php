@@ -66,8 +66,6 @@ class OrderController extends Controller
         $order         = new Order;
         $orderAddress  = new OrderAddress;
 
-
-
         try{
             $order->userId              = $userId;
             $order->carrierId           = $request->courrier;

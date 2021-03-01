@@ -189,4 +189,46 @@ class CartController extends Controller
 
         return response()->json('Success', 204);
     }
+
+    public function removeCartItem(Request $request){
+        $return            = array();
+        $request->cartItem = true;
+
+        $flag     = false;
+        $products = $request->session()->get('cart');
+        foreach ($request->session()->get('cart') as $key => $item) {
+
+            if ($item->productId == $request->productId) {
+                unset($products[$key]);
+                $request->session()->put('cart', $products);
+                $flag  = true;
+            }
+        }
+
+        if(!$flag){
+            return response()->json('Error', 400);
+        }
+
+        $filter               = $this->filter();
+
+        $courier              = $this->modelCourier->getRecordPublic($this->modelCourier->getTableName(), $filter);
+
+        $totalCartPrice       = $this->getTotalCartPrice($request);
+
+        $courierPrice         = 0;
+        if($courier){
+            $courierPrice     = $this->modelCourier->countCourierPrice($courier[0], $totalCartPrice);
+        }
+
+        $totalForPay  = $totalCartPrice + $courierPrice;
+
+        $return['message']        = 'Successfully updated cart!';
+        $return['countCart']      = $this->countCartItems($request);
+        $return['status']         = 200;
+        $return['cart']           = $request->session()->has('cart') ? $request->session()->get('cart') : '';
+        $return['totalCartPrice'] = number_format((float)$this->getTotalCartPrice($request), '2', '.', '');
+        $return['totalForPay']    = number_format((float)$totalForPay, '2', '.', '');
+
+        return response()->json($return, $return['status']);
+    }
 }

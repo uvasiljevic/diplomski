@@ -40,7 +40,7 @@
                             </div>
                             <div class="cart_item_name_container">
                                 <div class="cart_item_name"><a href="{{url($item->permalink)}}">{{$item->productName}}</a></div>
-                                <div class="cart_item_edit"><a href="#">Remove</a></div>
+                                <div class="cart_item_edit"><a href="#" class="cart-item-remove" data-productid="{{$item->productId}}">Remove</a></div>
                             </div>
                         </div>
                         <!-- Price -->
