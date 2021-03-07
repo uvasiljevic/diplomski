@@ -111,7 +111,8 @@ class OrderController extends Controller
             $data = array(
                 'firstname' => $request->firstname,
                 'lastname'  => $request->lastname,
-                'order'     => $order->id
+                'order'     => $order->id,
+                'price'     => $order->price
             );
 
             Mail::to($request->email)->send(new SendMailConfirmOrder($data));
