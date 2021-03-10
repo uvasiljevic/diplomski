@@ -66,4 +66,10 @@ class Controller extends BaseController
         return $product->save();
 
     }
+
+    function getMaxQuantityForProduct($product){
+        $maxQuantity = $product->quantity - 2;
+
+        return $maxQuantity;
+    }
 }

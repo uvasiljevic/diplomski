@@ -172,12 +172,6 @@ class CartController extends Controller
         return $return;
     }
 
-    function getMaxQuantityForProduct($product){
-        $maxQuantity = $product->quantity - 2;
-
-        return $maxQuantity;
-    }
-
     public function clearCart(Request $request){
 
         if($request->session()->has('cart')) {

@@ -59,12 +59,22 @@ class OrderController extends Controller
             return $this->jsonError('There is no products in cart', 400);
         }
 
+        $userId = -1;
         if($request->session()->has('user')){
             $userId =  $request->session()->get('user')->id;
         }
 
         $order         = new Order;
         $orderAddress  = new OrderAddress;
+
+        foreach ($request->session()->get('cart') as $item){
+            $product      = Product::find($item->productId);
+            $maxQuantity  = $this->getMaxQuantityForProduct($product);
+            if($item->quantity > $maxQuantity){
+                $error = array('Can not order '.$item->quantity.' '.$product->name.'. There is '.$maxQuantity.' '.$product->name.' in stock.');
+                return $this->jsonError($error, 400);
+            }
+        }
 
         try{
             $order->userId              = $userId;
@@ -127,8 +137,6 @@ class OrderController extends Controller
             \Log::error($ex->getMessage());
             return $this->jsonError('Problem with server!', 500);
         }
-
-
 
     }
 }
