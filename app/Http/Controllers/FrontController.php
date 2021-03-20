@@ -14,28 +14,6 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    protected $modelAds;
-    protected $modelSlider;
-    protected $modelProduct;
-    protected $modelImage;
-    protected $modelCategory;
-    protected $modelCourier;
-    protected $modelPaymentType;
-    protected $data;
-
-    public function __construct()
-    {
-        $modelMenu                = new Menu();
-        $this->modelAds           = new Ads();
-        $this->modelSlider        = new Slider();
-        $this->modelProduct       = new Product();
-        $this->modelCategory      = new Category();
-        $this->modelImage         = new Image();
-        $this->modelCourier       = new Courier();
-        $this->modelPaymentType   = new PaymentType();
-
-        $this->data['menu']      = $modelMenu->getMenu();
-    }
 
     public function index(Request $request){
 

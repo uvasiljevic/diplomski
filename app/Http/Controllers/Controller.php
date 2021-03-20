@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
+use App\Models\Category;
+use App\Models\Courier;
+use App\Models\Image;
+use App\Models\Menu;
+use App\Models\PaymentType;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,6 +18,29 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $modelAds;
+    protected $modelSlider;
+    protected $modelProduct;
+    protected $modelImage;
+    protected $modelCategory;
+    protected $modelCourier;
+    protected $modelPaymentType;
+    protected $data;
+
+    public function __construct()
+    {
+        $modelMenu                = new Menu();
+        $this->modelAds           = new Ads();
+        $this->modelSlider        = new Slider();
+        $this->modelProduct       = new Product();
+        $this->modelCategory      = new Category();
+        $this->modelImage         = new Image();
+        $this->modelCourier       = new Courier();
+        $this->modelPaymentType   = new PaymentType();
+
+        $this->data['menu']      = $modelMenu->getMenu();
+    }
 
     public function filter(){
         $filter = [

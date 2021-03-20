@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495af88d-eac0-4444-8dd7-631ebbfb9d69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/dashboard/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/headerdesktop.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/headermobile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/scripts.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +155,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projekat diplomski\laravel\resources\views\uv-admin\components\dashboard" />
       <recent name="C:\xampp\htdocs\projekat diplomski\laravel\resources\views\uv-public\components\home" />
     </key>
   </component>
@@ -180,6 +190,8 @@
       <workItem from="1613824495809" duration="23160000" />
       <workItem from="1614890394419" duration="3571000" />
       <workItem from="1615408007020" duration="3280000" />
+      <workItem from="1615550739876" duration="13115000" />
+      <workItem from="1616235525611" duration="597000" />
     </task>
     <task id="LOCAL-00001" summary="commint2">
       <created>1611514808961</created>
@@ -234,14 +246,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="commint2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614374079871">
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615725227479">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614374079871" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1615154771724">
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1615725227479" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1615412347069">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1615154771724" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1615412347069" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1611514814191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -254,14 +266,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1614371360550" />
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1615154899852">
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1615412351994">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615154899852" />
-    <state x="92" y="92" width="1182" height="544" key="dock-window-1" timestamp="1606611222272">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="92" y="92" width="1182" height="544" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1606611222272" />
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615412351994" />
     <state x="405" y="156" key="git4idea.merge.GitPullDialog" timestamp="1611514774077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
