@@ -6,7 +6,7 @@
 <meta name="keywords" content="au theme template">
 
 <!-- Title Page-->
-<title>Dashboard</title>
+<title>Sublime - admin</title>
 
 <!-- Fontfaces CSS-->
 <link rel="icon" href="{{asset("uv-public/images/product_9.jpg")}}" type="image/jpg" sizes="16x16">

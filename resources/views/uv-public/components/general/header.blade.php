@@ -61,13 +61,13 @@
                             @if(!session()->has('user'))
                                 <div class="search">
                                     <div class="search_icon">
-                                        <a href="/login" title="Log in"><i class="glyphicon glyphicon-user"></i></a>
+                                        <a href="{{url("/login")}}" title="Log in"><i class="glyphicon glyphicon-user"></i></a>
                                     </div>
                                 </div>
 
                             @else
                                 <div class="search">
-                                    <a href="/logout" title="Log out"><i class="glyphicon glyphicon-log-out"></i></a>
+                                    <a href="{{url("/logout")}}" title="Log out"><i class="glyphicon glyphicon-log-out"></i></a>
                                 </div>
                             @endif
                             <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>

@@ -10,6 +10,7 @@ use App\Models\Menu;
 use App\Models\PaymentType;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\Order;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,6 +27,7 @@ class Controller extends BaseController
     protected $modelCategory;
     protected $modelCourier;
     protected $modelPaymentType;
+    protected $modelOrder;
     protected $data;
 
     public function __construct()
@@ -38,6 +40,7 @@ class Controller extends BaseController
         $this->modelImage         = new Image();
         $this->modelCourier       = new Courier();
         $this->modelPaymentType   = new PaymentType();
+        $this->modelOrder         = new Order();
 
         $this->data['menu']      = $modelMenu->getMenu();
     }
@@ -101,5 +104,32 @@ class Controller extends BaseController
         $maxQuantity = $product->quantity - 2;
 
         return $maxQuantity;
+    }
+
+    public function statusFilterArray(){
+        $filter = [
+            1  => "Active",
+            -1 => "Deactived"
+        ];
+
+        return $filter;
+    }
+
+    public function deleteFilterArray(){
+        $filter = [
+            1  => "Active",
+            -1 => "Deleted",
+        ];
+
+        return $filter;
+    }
+
+    public function yesNoArray(){
+        $filter = [
+            1  => "Yes",
+            -1 => "No",
+        ];
+
+        return $filter;
     }
 }

@@ -11,40 +11,26 @@
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="index.html">Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="index2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="index3.html">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.html">Dashboard 4</a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
+                    <a href="{{url("/admin/order")}}">
+                        <i class="fas fa-chart-bar"></i>Order</a>
                 </li>
                 <li>
                     <a href="table.html">
-                        <i class="fas fa-table"></i>Tables</a>
+                        <i class="fas fa-table"></i>Product</a>
                 </li>
                 <li>
                     <a href="form.html">
-                        <i class="far fa-check-square"></i>Forms</a>
+                        <i class="far fa-check-square"></i>User</a>
                 </li>
                 <li>
                     <a href="calendar.html">
-                        <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        <i class="fas fa-calendar-alt"></i>Admin</a>
                 </li>
                 <li>
                     <a href="map.html">
-                        <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        <i class="fas fa-map-marker-alt"></i>Config</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">

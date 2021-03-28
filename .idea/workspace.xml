@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495af88d-eac0-4444-8dd7-631ebbfb9d69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/dashboard/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/headerdesktop.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/headermobile.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/scripts.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-public/components/general/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-public/components/general/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +187,8 @@
       <workItem from="1614890394419" duration="3571000" />
       <workItem from="1615408007020" duration="3280000" />
       <workItem from="1615550739876" duration="13115000" />
-      <workItem from="1616235525611" duration="597000" />
+      <workItem from="1616235525611" duration="11577000" />
+      <workItem from="1616855727396" duration="4330000" />
     </task>
     <task id="LOCAL-00001" summary="commint2">
       <created>1611514808961</created>
@@ -235,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615154773235</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commint2">
+      <created>1616236526283</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1616236526283</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,10 +254,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1615725227479" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1615412347069">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1616236522612">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1615412347069" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616236522611" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1611514814191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -266,10 +270,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1614371360550" />
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1615412351994">
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1616236545065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615412351994" />
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616236545065" />
     <state x="405" y="156" key="git4idea.merge.GitPullDialog" timestamp="1611514774077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
