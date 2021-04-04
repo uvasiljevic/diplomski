@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495af88d-eac0-4444-8dd7-631ebbfb9d69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uv-admin/js/order.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uv-public/components/general/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-public/components/general/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,6 +187,7 @@
       <workItem from="1615550739876" duration="13115000" />
       <workItem from="1616235525611" duration="11577000" />
       <workItem from="1616855727396" duration="4330000" />
+      <workItem from="1617301694206" duration="17121000" />
     </task>
     <task id="LOCAL-00001" summary="commint2">
       <created>1611514808961</created>
@@ -254,37 +253,37 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1615725227479" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1616236522612">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1616962269626">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616236522611" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616962269626" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1611514814191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1611514814191" />
-    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1608587226040">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1608587226040" />
     <state x="517" y="288" key="NewPhpFileDialog" timestamp="1614371360550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1614371360550" />
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1616236545065">
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1616962273881">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616236545065" />
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616962273881" />
+    <state x="314" y="61" width="737" height="606" key="find.popup" timestamp="1617539258926">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="314" y="61" width="737" height="606" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1617539258926" />
     <state x="405" y="156" key="git4idea.merge.GitPullDialog" timestamp="1611514774077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="405" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1611514774077" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1609783556478">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1617539259016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1609783556478" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1613826443102">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1617539259016" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1617303238275">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1613826443102" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617303238275" />
   </component>
 </project>

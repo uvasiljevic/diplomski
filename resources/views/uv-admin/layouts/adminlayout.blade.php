@@ -34,6 +34,7 @@
 
 <!-- SCRIPTS-->
 @include('uv-admin.components.general.scripts')
+@yield('scripts')
 <!-- END SCRIPTS-->
 
 </body>

@@ -117,8 +117,8 @@ class Controller extends BaseController
 
     public function deleteFilterArray(){
         $filter = [
-            1  => "Active",
-            -1 => "Deleted",
+            -1  => "Active",
+            1   => "Deleted",
         ];
 
         return $filter;
