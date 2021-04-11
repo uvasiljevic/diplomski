@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495af88d-eac0-4444-8dd7-631ebbfb9d69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uv-admin/js/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uv-admin/js/product.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/product/product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/order/order.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/layouts/adminlayout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uv-admin/js/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/uv-admin/js/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uv-admin/components/general/menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +145,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../php2laravel/laravel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../aquaTrade" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -187,7 +188,10 @@
       <workItem from="1615550739876" duration="13115000" />
       <workItem from="1616235525611" duration="11577000" />
       <workItem from="1616855727396" duration="4330000" />
-      <workItem from="1617301694206" duration="17121000" />
+      <workItem from="1617301694206" duration="22997000" />
+      <workItem from="1617824436376" duration="5015000" />
+      <workItem from="1618134685030" duration="3536000" />
+      <workItem from="1618172663860" duration="1470000" />
     </task>
     <task id="LOCAL-00001" summary="commint2">
       <created>1611514808961</created>
@@ -238,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616236526283</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commint2">
+      <created>1617550038881</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617550038881</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,30 +264,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1615725227479" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1616962269626">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1617550037247">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616962269626" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1617550037247" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1611514814191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1611514814191" />
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1618134719413">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1618134719413" />
     <state x="517" y="288" key="NewPhpFileDialog" timestamp="1614371360550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1614371360550" />
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1616962273881">
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2" timestamp="1617550040799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616962273881" />
+    <state x="275" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617550040799" />
     <state x="314" y="61" width="737" height="606" key="find.popup" timestamp="1617539258926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="314" y="61" width="737" height="606" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1617539258926" />
-    <state x="405" y="156" key="git4idea.merge.GitPullDialog" timestamp="1611514774077">
+    <state x="405" y="156" key="git4idea.merge.GitPullDialog" timestamp="1618134699226">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="405" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1611514774077" />
+    <state x="405" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1618134699226" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1617539259016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

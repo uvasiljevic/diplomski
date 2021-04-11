@@ -17,6 +17,8 @@ Route::prefix('/admin')->group(function(){
     Route::get('/', 'App\Http\Controllers\AdminController@dashboard');
     Route::get('/order', 'App\Http\Controllers\AdminController@order');
     Route::post('/order', 'App\Http\Controllers\AdminController@order');
+    Route::get('/product', 'App\Http\Controllers\AdminController@product');
+    Route::post('/product', 'App\Http\Controllers\AdminController@product');
 
 });
 

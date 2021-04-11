@@ -17,7 +17,7 @@
                         <i class="fas fa-chart-bar"></i>Order</a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="{{url("/admin/product")}}">
                         <i class="fas fa-table"></i>Product</a>
                 </li>
                 <li>

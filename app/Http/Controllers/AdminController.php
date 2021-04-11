@@ -46,4 +46,31 @@ class AdminController extends Controller
         return view('/uv-admin/components/order/order', $this->data);
 
     }
+
+    public function product(Request $request){
+        $filter   = $this->filter();
+
+        if($request->has('p_status') && $request->p_status != 0){
+            $filter['status'] = "= ".$request->p_status;
+        }
+        if($request->has('p_del') && $request->p_del != 0){
+            $filter['del'] = "= ".$request->p_status;
+        }
+        if($request->has('p_productId') && $request->p_productId != null){
+            $filter['id'] = "= ".$request->p_productId;
+        }
+
+        $records  = $this->modelProduct->getRecords($this->modelProduct->getTableName(), $filter);
+        $this->data['records']           = $records;
+        $this->data['statusFilterArray'] = $this->statusFilterArray();
+        $this->data['deleteFilterArray'] = $this->deleteFilterArray();
+        $this->data['yesNoArray']        = $this->yesNoArray();
+
+        if($request->ajax()){
+            return response()->json($records,  200);
+        }
+
+        return view('/uv-admin/components/product/product', $this->data);
+
+    }
 }

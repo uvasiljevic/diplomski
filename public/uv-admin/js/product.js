@@ -16,7 +16,7 @@
 $(document).ready(function()
 {
     "use strict";
-    $('#o_filter').click( function (e) {
+    $('#p_filter').click( function (e) {
         e.preventDefault();
         showData();
 
@@ -25,18 +25,18 @@ $(document).ready(function()
     $(document).on('click', '.pagination a', function(e){
         e.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
-        $('#o_page').val(page);
+        $('#p_page').val(page);
         showData();
     });
 
     function showData(){
-        var page =  $('#o_page').val();
+        var page =  $('#p_page').val();
         $.ajax({
 
             url: window.location+'?page='+page,
             method: "post",
             dataType: "json",
-            data:$('#order_form').serialize(),
+            data:$('#product_form').serialize(),
             success: function(data){
                 console.log(data);
                 writeTable(data);
@@ -50,22 +50,16 @@ $(document).ready(function()
         var html = '';
         if(data){
             for(let d of data.data){
+                var img = '/uv-public/images/'+d.image;
                 html +=`<tr class="tr-shadow">
                                     <td>${d.id}</td>
                                     <td>
-                                        <span>${d.firstName} ${d.lastName}</span><br/>
-                                        <span class="block-email">${d.email}</span><br/>
-                                        <span>${d.street} ${d.streetNumber}</span><br/>
-                                        <span>${d.zipCode} ${d.city}</span>
+                                        <img width="100px" height="100px" alt="${d.title}" src="${img}" />
                                     </td>
-                                    <td class="desc"><span class="badge badge-primary">${d.paymentType}</span></td>
-                                    <td>${d.dateCreate}</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>${d.postage}</td>
+                                    <td class="desc">${d.title}</td>
+                                    <td>${d.categoryName}</td>
+                                    <td>${d.quantity}</td>
                                     <td>${d.price}</td>
-                                    <td>${d.ransom}</td>
                                     <td>
                                         <div class="table-data-feature">
                                             <button class="item" data-id="${d.id}" data-toggle="tooltip" data-placement="top" title="Send">
@@ -83,19 +77,20 @@ $(document).ready(function()
             }
         }
 
-        $('#order_table').html(html);
+        $('#product_table').html(html);
     }
 
     function showPagination(data){
+        console.log(data)
         var html = `<nav>
         <ul class="pagination">`;
-           for(let d of data.links){
-               let active = d.active ? 'active' : '';
-               html += `<li class="page-item ${active}"><a class="page-link" href="${d.url}">${d.label}</a></li>`;
-            }
+        for(let d of data.links){
+            let active = d.active ? 'active' : '';
+            html += `<li class="page-item ${active}"><a class="page-link" href="${d.url}">${d.label}</a></li>`;
+        }
         html  += `</ul>
         </nav>`;
-        $('#o_pagination').html(html);
+        $('#p_pagination').html(html);
     }
 
     $(document).on('click', '.offset', function(e){
